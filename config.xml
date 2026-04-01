@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget
+        id="com.peakl.panditbooking"
+        version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+>
+    <name>Pandit Booking</name>
+    <description>Pandit Booking by Peaklyft</description>
+    <author email="dev@peaklyft.com" href="https://peaklyft.com">
+        Peaklyft
+    </author>
+
+    <content src="index.html" />
+
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- GLOBAL SETTINGS (applies to Android + iOS fallback)            -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+
+    <!-- Disables iOS swipe-back gesture — prevents accidental navigation -->
+    <preference name="AllowBackForwardNavigationGestures" value="false" />
+
+    <!-- Disables pinch-to-zoom — app should feel native, not like a webpage -->
+    <preference name="EnableViewportScale"                value="false" />
+
+    <!-- IMPORTANT: false = allows native scroll to work properly.
+         Setting true was causing keyboard to dismiss immediately on scroll
+         and showing black area when keyboard opened. -->
+    <preference name="DisallowOverscroll"                 value="false" />
+
+    <!-- Splash screen settings — disabled for faster app start -->
+    <preference name="AutoHideSplashScreen"               value="false" />
+    <preference name="SplashScreenDelay"                  value="0" />
+    <preference name="ShowSplashScreenSpinner"            value="false" />
+    <preference name="FadeSplashScreen"                   value="true" />
+
+    <!-- viewport-fit=cover — makes content go edge to edge (safe area support)
+         user-scalable=no — prevents zoom on input focus in older iOS -->
+    <preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+
+    <!-- IMPORTANT: false = shows "Done" bar above keyboard.
+         Setting true was hiding this bar, making it impossible
+         for users to dismiss numeric/phone keyboards. -->
+    <preference name="HideKeyboardFormAccessoryBar"       value="false" />
+
+    <!-- IMPORTANT: Keyboard resize is disabled intentionally.
+         - "native" mode was collapsing window.innerHeight to 0 (black screen).
+         - "body" mode was not shrinking document.body on this device.
+         - We handle keyboard scroll manually in React using keyboardDidShow event
+           and paddingBottom + scrollIntoView instead. -->
+    <preference name="KeyboardResize"                     value="false" />
+    <preference name="KeyboardResizeMode"                 value="none" />
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- iOS ONLY SETTINGS                                              -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <platform name="ios">
+
+        <!-- Same as global — repeated here because iOS platform block
+             overrides global settings if not explicitly set -->
+        <preference name="AllowBackForwardNavigationGestures" value="false" />
+        <preference name="EnableViewportScale"                value="false" />
+
+        <!-- IMPORTANT: false = scroll works normally on iOS.
+             true was causing black area and keyboard dismiss on scroll. -->
+        <preference name="DisallowOverscroll"                 value="false" />
+
+        <!-- Splash screen — disabled for instant app load feel -->
+        <preference name="AutoHideSplashScreen"               value="false" />
+        <preference name="SplashScreenDelay"                  value="0" />
+        <preference name="FadeSplashScreen"                   value="true" />
+        <preference name="FadeSplashScreenDuration"           value="0.3" />
+        <preference name="ShowSplashScreenSpinner"            value="false" />
+
+        <!-- Disables rubber band bounce effect on scroll edges -->
+        <preference name="UIWebViewBounce"                    value="false" />
+
+        <!-- Forces WKWebView engine — UIWebView is deprecated by Apple -->
+        <preference name="WKWebViewOnly"                      value="true" />
+        <preference name="CordovaWebViewEngine"               value="CDVWKWebViewEngine" />
+
+        <!-- viewport-fit=cover — required for iPhone notch/home bar safe area -->
+        <preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+        <!-- Status bar settings — white background, dark/light icons -->
+        <preference name="Fullscreen"                         value="false" />
+        <preference name="StatusBarOverlaysWebView"           value="false" />
+        <preference name="StatusBarStyle"                     value="lightcontent" />
+        <preference name="StatusBarBackgroundColor"           value="#ffffff" />
+
+        <!-- IMPORTANT: false = shows accessory bar with "Done" button above keyboard.
+             This is the only reliable way to dismiss numeric/phone keyboards on iOS
+             inside WKWebView, since enterKeyHint does not work on tel/numeric inputs. -->
+        <preference name="HideKeyboardFormAccessoryBar"       value="false" />
+
+        <!-- IMPORTANT: Keyboard resize disabled — same reason as global.
+             Scroll is handled manually in React via keyboardDidShow + paddingBottom.
+             See AddressFormScreen.tsx and RateReviewScreen.tsx useEffect for implementation. -->
+        <preference name="KeyboardResize"                     value="false" />
+        <preference name="KeyboardResizeMode"                 value="none" />
+
+        <!-- Camera and photo library permissions for profile photo upload -->
+        <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+            <string>Camera access for profile photo</string>
+        </edit-config>
+        <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+            <string>Photo library access for profile photo</string>
+        </edit-config>
+        <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+            <string>Photo library access for saving photos</string>
+        </edit-config>
+
+    </platform>
+
+</widget>
