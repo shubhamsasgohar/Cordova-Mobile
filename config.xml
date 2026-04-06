@@ -1,118 +1,117 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget
-        id="com.peakl.panditbooking"
-        version="1.0.0"
-        xmlns="http://www.w3.org/ns/widgets"
-        xmlns:cdv="http://cordova.apache.org/ns/1.0"
->
+<widget id="com.peaklyftdev.panditbooking" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Pandit Booking</name>
     <description>Pandit Booking by Peaklyft</description>
     <author email="dev@peaklyft.com" href="https://peaklyft.com">
         Peaklyft
     </author>
-
     <content src="index.html" />
-
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- GLOBAL SETTINGS (applies to Android + iOS fallback)            -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-
-    <!-- Disables iOS swipe-back gesture — prevents accidental navigation -->
+    <allow-navigation href="https://*/*" />
+    <access origin="*" />
     <preference name="AllowBackForwardNavigationGestures" value="false" />
-
-    <!-- Disables pinch-to-zoom — app should feel native, not like a webpage -->
-    <preference name="EnableViewportScale"                value="false" />
-
-    <!-- IMPORTANT: false = allows native scroll to work properly.
-         Setting true was causing keyboard to dismiss immediately on scroll
-         and showing black area when keyboard opened. -->
-    <preference name="DisallowOverscroll"                 value="false" />
-
-    <!-- Splash screen settings — disabled for faster app start -->
-    <preference name="AutoHideSplashScreen"               value="false" />
-    <preference name="SplashScreenDelay"                  value="0" />
-    <preference name="ShowSplashScreenSpinner"            value="false" />
-    <preference name="FadeSplashScreen"                   value="true" />
-
-    <!-- viewport-fit=cover — makes content go edge to edge (safe area support)
-         user-scalable=no — prevents zoom on input focus in older iOS -->
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="SplashScreenDelay" value="0" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="FadeSplashScreen" value="true" />
     <preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
-
-    <!-- IMPORTANT: false = shows "Done" bar above keyboard.
-         Setting true was hiding this bar, making it impossible
-         for users to dismiss numeric/phone keyboards. -->
-    <preference name="HideKeyboardFormAccessoryBar"       value="false" />
-
-    <!-- IMPORTANT: Keyboard resize is disabled intentionally.
-         - "native" mode was collapsing window.innerHeight to 0 (black screen).
-         - "body" mode was not shrinking document.body on this device.
-         - We handle keyboard scroll manually in React using keyboardDidShow event
-           and paddingBottom + scrollIntoView instead. -->
-    <preference name="KeyboardResize"                     value="false" />
-    <preference name="KeyboardResizeMode"                 value="none" />
-
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- iOS ONLY SETTINGS                                              -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <preference name="HideKeyboardFormAccessoryBar" value="false" />
+    <preference name="KeyboardResize" value="false" />
+    <preference name="KeyboardResizeMode" value="none" />
     <platform name="ios">
-
-        <!-- Same as global — repeated here because iOS platform block
-             overrides global settings if not explicitly set -->
+        <preference name="orientation" value="portrait" />
         <preference name="AllowBackForwardNavigationGestures" value="false" />
-        <preference name="EnableViewportScale"                value="false" />
-
-        <!-- IMPORTANT: false = scroll works normally on iOS.
-             true was causing black area and keyboard dismiss on scroll. -->
-        <preference name="DisallowOverscroll"                 value="false" />
-
-        <!-- Splash screen — disabled for instant app load feel -->
-        <preference name="AutoHideSplashScreen"               value="false" />
-        <preference name="SplashScreenDelay"                  value="0" />
-        <preference name="FadeSplashScreen"                   value="true" />
-        <preference name="FadeSplashScreenDuration"           value="0.3" />
-        <preference name="ShowSplashScreenSpinner"            value="false" />
-
-        <!-- Disables rubber band bounce effect on scroll edges -->
-        <preference name="UIWebViewBounce"                    value="false" />
-
-        <!-- Forces WKWebView engine — UIWebView is deprecated by Apple -->
-        <preference name="WKWebViewOnly"                      value="true" />
-        <preference name="CordovaWebViewEngine"               value="CDVWKWebViewEngine" />
-
-        <!-- viewport-fit=cover — required for iPhone notch/home bar safe area -->
+        <preference name="EnableViewportScale" value="false" />
+        <preference name="DisallowOverscroll" value="false" />
+        <preference name="AutoHideSplashScreen" value="false" />
+        <preference name="SplashScreenDelay" value="3000" />
+        <preference name="FadeSplashScreen" value="true" />
+        <preference name="FadeSplashScreenDuration" value="1000" />
+        <preference name="ShowSplashScreenSpinner" value="false" />
+        <preference name="UIWebViewBounce" value="false" />
+        <preference name="WKWebViewOnly" value="true" />
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
         <preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover" />
-
-        <!-- Status bar settings — white background, dark/light icons -->
-        <preference name="Fullscreen"                         value="false" />
-        <preference name="StatusBarOverlaysWebView"           value="false" />
-        <preference name="StatusBarStyle"                     value="lightcontent" />
-        <preference name="StatusBarBackgroundColor"           value="#ffffff" />
-
-        <!-- IMPORTANT: false = shows accessory bar with "Done" button above keyboard.
-             This is the only reliable way to dismiss numeric/phone keyboards on iOS
-             inside WKWebView, since enterKeyHint does not work on tel/numeric inputs. -->
-        <preference name="HideKeyboardFormAccessoryBar"       value="false" />
-
-        <!-- IMPORTANT: Keyboard resize disabled — same reason as global.
-             Scroll is handled manually in React via keyboardDidShow + paddingBottom.
-             See AddressFormScreen.tsx and RateReviewScreen.tsx useEffect for implementation. -->
-        <preference name="KeyboardResize"                     value="false" />
-        <preference name="KeyboardResizeMode"                 value="none" />
-
-        <!-- Camera and photo library permissions for profile photo upload -->
-        <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+        <preference name="Fullscreen" value="false" />
+        <preference name="StatusBarOverlaysWebView" value="false" />
+        <preference name="StatusBarStyle" value="lightcontent" />
+        <preference name="StatusBarBackgroundColor" value="#ffffff" />
+        <preference name="HideKeyboardFormAccessoryBar" value="false" />
+        <preference name="KeyboardResize" value="false" />
+        <preference name="KeyboardResizeMode" value="none" />
+        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
             <string>Camera access for profile photo</string>
         </edit-config>
-        <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
             <string>Photo library access for profile photo</string>
         </edit-config>
-        <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
             <string>Photo library access for saving photos</string>
         </edit-config>
-
+        <icon height="57" src="resources/ios/icon/icon.png" width="57" />
+        <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
+        <icon height="20" src="resources/ios/icon/icon-20.png" width="20" />
+        <icon height="40" src="resources/ios/icon/icon-20@2x.png" width="40" />
+        <icon height="60" src="resources/ios/icon/icon-20@3x.png" width="60" />
+        <icon height="29" src="resources/ios/icon/icon-29.png" width="29" />
+        <icon height="58" src="resources/ios/icon/icon-29@2x.png" width="58" />
+        <icon height="87" src="resources/ios/icon/icon-29@3x.png" width="87" />
+        <icon height="48" src="resources/ios/icon/icon-24@2x.png" width="48" />
+        <icon height="55" src="resources/ios/icon/icon-27.5@2x.png" width="55" />
+        <icon height="88" src="resources/ios/icon/icon-44@2x.png" width="88" />
+        <icon height="172" src="resources/ios/icon/icon-86@2x.png" width="172" />
+        <icon height="196" src="resources/ios/icon/icon-98@2x.png" width="196" />
+        <icon height="216" src="resources/ios/icon/icon-108@2x.png" width="216" />
+        <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
+        <icon height="80" src="resources/ios/icon/icon-40@2x.png" width="80" />
+        <icon height="120" src="resources/ios/icon/icon-40@3x.png" width="120" />
+        <icon height="50" src="resources/ios/icon/icon-50.png" width="50" />
+        <icon height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
+        <icon height="60" src="resources/ios/icon/icon-60.png" width="60" />
+        <icon height="120" src="resources/ios/icon/icon-60@2x.png" width="120" />
+        <icon height="180" src="resources/ios/icon/icon-60@3x.png" width="180" />
+        <icon height="72" src="resources/ios/icon/icon-72.png" width="72" />
+        <icon height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
+        <icon height="76" src="resources/ios/icon/icon-76.png" width="76" />
+        <icon height="152" src="resources/ios/icon/icon-76@2x.png" width="152" />
+        <icon height="167" src="resources/ios/icon/icon-83.5@2x.png" width="167" />
+        <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" />
+        <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
+        <splash height="2688" src="resources/ios/splash/Default-2688h~iphone.png" width="1242" />
+        <splash height="1242" src="resources/ios/splash/Default-Landscape-2688h~iphone.png" width="2688" />
+        <splash height="1792" src="resources/ios/splash/Default-1792h~iphone.png" width="828" />
+        <splash height="828" src="resources/ios/splash/Default-Landscape-1792h~iphone.png" width="1792" />
+        <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
+        <splash height="1125" src="resources/ios/splash/Default-Landscape-2436h.png" width="2436" />
+        <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
+        <splash height="1242" src="resources/ios/splash/Default-Landscape-736h.png" width="2208" />
+        <splash height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="2048" src="resources/ios/splash/Default-Landscape@~ipadpro.png" width="2732" />
+        <splash height="768" src="resources/ios/splash/Default-Landscape~ipad.png" width="1024" />
+        <splash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="2732" src="resources/ios/splash/Default-Portrait@~ipadpro.png" width="2048" />
+        <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
+        <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
+        <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
+        <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-
+    <platform name="android">
+        <preference name="orientation" value="portrait" />
+        <preference name="KeyboardResize" value="false" />
+        <preference name="KeyboardResizeMode" value="none" />
+        <preference name="android-windowSoftInputMode" value="adjustPan" />
+        <preference name="AndroidWindowSplashScreenBackground" value="#F5E9D3" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="resources/icon.png" />
+        <preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#F5E9D3" />
+        <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
+        <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
+        <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
+        <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png" />
+        <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
+        <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
+    </platform>
 </widget>

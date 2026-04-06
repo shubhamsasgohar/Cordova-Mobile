@@ -22,13 +22,17 @@
       "cordova-plugin-wkwebview-engine": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-camera": {}
+      "cordova-plugin-camera": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-actionsheet": {}
     }
   },
   "devDependencies": {
     "cordova-android": "^15.0.0",
     "cordova-ios": "^8.0.1",
+    "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-camera": "^8.0.0",
+    "cordova-plugin-file": "^8.1.3",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-splashscreen": "^6.0.2",
     "cordova-plugin-statusbar": "^4.0.0",
