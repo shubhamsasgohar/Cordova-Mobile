@@ -1,31 +1,49 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.peaklyftdev.panditbooking" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<!-- Widget ID: Unique identifier for the app; Version: Current version of the app -->
+<widget id="com.peaklyftdev.panditbooking"
+        version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- App basic information seen by users -->
     <name>Pandit Booking</name>
     <description>Pandit Booking by Peaklyft</description>
     <author email="dev@peaklyft.com" href="https://peaklyft.com">
         Peaklyft
     </author>
+
+    <!-- Main entry point of the application -->
     <content src="index.html" />
+
+    <!-- Security: Whitelisting URLs that the app is allowed to navigate to or open -->
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
     <access origin="*" />
-    <preference name="AllowBackForwardNavigationGestures" value="false" />
-    <preference name="EnableViewportScale" value="false" />
-    <preference name="DisallowOverscroll" value="false" />
-    <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="SplashScreenDelay" value="0" />
-    <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="FadeSplashScreen" value="true" />
+
+    <!-- General App Preferences -->
+    <preference name="AllowBackForwardNavigationGestures" value="false" /> 
+    <preference name="EnableViewportScale" value="false" /> 
+    <preference name="DisallowOverscroll" value="true" /> 
+    <preference name="AutoHideSplashScreen" value="false" /> 
+    <preference name="SplashScreenDelay" value="0" /> 
+    <preference name="ShowSplashScreenSpinner" value="false" /> 
+    <preference name="FadeSplashScreen" value="true" /> 
     <preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
     <preference name="HideKeyboardFormAccessoryBar" value="false" />
     <preference name="KeyboardResize" value="false" />
     <preference name="KeyboardResizeMode" value="none" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+
+    <!-- iOS Specific Configurations -->
     <platform name="ios">
         <preference name="orientation" value="portrait" />
         <preference name="AllowBackForwardNavigationGestures" value="false" />
         <preference name="EnableViewportScale" value="false" />
-        <preference name="DisallowOverscroll" value="false" />
+        <preference name="DisallowOverscroll" value="true" />
         <preference name="AutoHideSplashScreen" value="false" />
         <preference name="SplashScreenDelay" value="3000" />
         <preference name="FadeSplashScreen" value="true" />
@@ -34,23 +52,26 @@
         <preference name="UIWebViewBounce" value="false" />
         <preference name="WKWebViewOnly" value="true" />
         <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-        <preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover" />
         <preference name="Fullscreen" value="false" />
-        <preference name="StatusBarOverlaysWebView" value="false" />
+        <preference name="StatusBarOverlaysWebView" value="false" /> 
         <preference name="StatusBarStyle" value="lightcontent" />
         <preference name="StatusBarBackgroundColor" value="#ffffff" />
         <preference name="HideKeyboardFormAccessoryBar" value="false" />
         <preference name="KeyboardResize" value="false" />
         <preference name="KeyboardResizeMode" value="none" />
+
+        <!-- Permissions: Required for Apple's privacy review -->
         <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-            <string>Camera access for profile photo</string>
+            <string>Camera access for profile photo</string> <!-- Explanation for user when app asks for CAMERA access -->
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
-            <string>Photo library access for profile photo</string>
+            <string>Photo library access for profile photo</string> <!-- Explanation for user when app asks for GALLERY access -->
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
-            <string>Photo library access for saving photos</string>
+            <string>Photo library access for saving photos</string> <!-- Permission to save photos to the user's library -->
         </edit-config>
+
+        <!-- iOS Icons and Splash Screens -->
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
         <icon height="20" src="resources/ios/icon/icon-20.png" width="20" />
@@ -99,6 +120,8 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
+
+    <!-- Android Specific Configurations -->
     <platform name="android">
         <preference name="orientation" value="portrait" />
         <preference name="KeyboardResize" value="false" />
@@ -107,11 +130,25 @@
         <preference name="AndroidWindowSplashScreenBackground" value="#F5E9D3" />
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="resources/icon.png" />
         <preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#F5E9D3" />
+        
+        <!-- Android Icons -->
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
         <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png" />
         <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
         <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
+
+        <!-- Line 121-129: Network and SDK Settings -->
+        <preference name="android-minSdkVersion" value="22" /> <!-- Minimum Android API Level supported (Android 5.1) -->
+        <preference name="AndroidInsecureFileModeEnabled" value="true" /> <!-- Allows accessing local storage files via file:// -->
+        <preference name="android-cleartext" value="true" /> <!-- Enables unencrypted (HTTP) network requests -->
+        <edit-config
+         file="app/src/main/AndroidManifest.xml"
+         mode="merge"
+          target="/manifest/application">
+            <!-- Injecting cleartext permission directly into AndroidManifest.xml -->
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
     </platform>
 </widget>
