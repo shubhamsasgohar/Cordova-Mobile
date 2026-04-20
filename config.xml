@@ -1,154 +1,341 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!-- Widget ID: Unique identifier for the app; Version: Current version of the app -->
+<!--
+
+  HOW THIS FILE WORKS:
+
+  - Global preferences apply to ALL platforms (iOS + Android)
+
+  - Platform-specific blocks OVERRIDE global preferences
+
+  - Order matters: platform block always wins over global
+
+-->
+ 
 <widget id="com.peaklyftdev.panditbooking"
+
         version="1.0.0"
+
         xmlns="http://www.w3.org/ns/widgets"
+
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
+
         xmlns:android="http://schemas.android.com/apk/res/android">
-    
-    <!-- App basic information seen by users -->
-    <name>Pandit Booking</name>
-    <description>Pandit Booking by Peaklyft</description>
-    <author email="dev@peaklyft.com" href="https://peaklyft.com">
+
+<name>Smart Pujari</name>
+<description>Smart Pujari by Peaklyft</description>
+<author email="dev@peaklyft.com" href="https://peaklyft.com">
+
         Peaklyft
-    </author>
+</author>
+ 
+    <!-- Main entry point — loads index.html on app start -->
+<content src="index.html" />
+ 
+    <!-- ═══════════════════════════════════════════════════════════
 
-    <!-- Main entry point of the application -->
-    <content src="index.html" />
+         SECURITY — URL WHITELISTING
 
-    <!-- Security: Whitelisting URLs that the app is allowed to navigate to or open -->
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-navigation href="http://*/*" />
-    <allow-navigation href="https://*/*" />
-    <access origin="*" />
+         Controls which URLs the app can navigate to or open
 
-    <!-- General App Preferences -->
-    <preference name="AllowBackForwardNavigationGestures" value="false" /> 
-    <preference name="EnableViewportScale" value="false" /> 
-    <preference name="DisallowOverscroll" value="true" /> 
-    <preference name="AutoHideSplashScreen" value="false" /> 
-    <preference name="SplashScreenDelay" value="0" /> 
-    <preference name="ShowSplashScreenSpinner" value="false" /> 
-    <preference name="FadeSplashScreen" value="true" /> 
-    <preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
-    <preference name="HideKeyboardFormAccessoryBar" value="false" />
-    <preference name="KeyboardResize" value="false" />
-    <preference name="KeyboardResizeMode" value="none" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="StatusBarOverlaysWebView" value="true" />
+         Both http and https required for API calls to work
 
-    <!-- iOS Specific Configurations -->
-    <platform name="ios">
-        <preference name="orientation" value="portrait" />
-        <preference name="AllowBackForwardNavigationGestures" value="false" />
-        <preference name="EnableViewportScale" value="false" />
-        <preference name="DisallowOverscroll" value="true" />
-        <preference name="AutoHideSplashScreen" value="false" />
-        <preference name="SplashScreenDelay" value="3000" />
-        <preference name="FadeSplashScreen" value="true" />
-        <preference name="FadeSplashScreenDuration" value="1000" />
-        <preference name="ShowSplashScreenSpinner" value="false" />
-        <preference name="UIWebViewBounce" value="false" />
-        <preference name="WKWebViewOnly" value="true" />
-        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-        <preference name="Fullscreen" value="false" />
-        <preference name="StatusBarOverlaysWebView" value="false" /> 
-        <preference name="StatusBarStyle" value="lightcontent" />
-        <preference name="StatusBarBackgroundColor" value="#ffffff" />
-        <preference name="HideKeyboardFormAccessoryBar" value="false" />
-        <preference name="KeyboardResize" value="false" />
-        <preference name="KeyboardResizeMode" value="none" />
+         ═══════════════════════════════════════════════════════════ -->
+<allow-intent href="http://*/*" />
+<allow-intent href="https://*/*" />
+<allow-navigation href="http://*/*" />
+<allow-navigation href="https://*/*" />
+ 
+    <!-- Allow all origins for API calls (both http and https) -->
+<access origin="*" />
+ 
+    <!-- ═══════════════════════════════════════════════════════════
 
-        <!-- Permissions: Required for Apple's privacy review -->
-        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-            <string>Camera access for profile photo</string> <!-- Explanation for user when app asks for CAMERA access -->
-        </edit-config>
-        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
-            <string>Photo library access for profile photo</string> <!-- Explanation for user when app asks for GALLERY access -->
-        </edit-config>
-        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
-            <string>Photo library access for saving photos</string> <!-- Permission to save photos to the user's library -->
-        </edit-config>
+         GLOBAL PREFERENCES
 
-        <!-- iOS Icons and Splash Screens -->
-        <icon height="57" src="resources/ios/icon/icon.png" width="57" />
-        <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
-        <icon height="20" src="resources/ios/icon/icon-20.png" width="20" />
-        <icon height="40" src="resources/ios/icon/icon-20@2x.png" width="40" />
-        <icon height="60" src="resources/ios/icon/icon-20@3x.png" width="60" />
-        <icon height="29" src="resources/ios/icon/icon-29.png" width="29" />
-        <icon height="58" src="resources/ios/icon/icon-29@2x.png" width="58" />
-        <icon height="87" src="resources/ios/icon/icon-29@3x.png" width="87" />
-        <icon height="48" src="resources/ios/icon/icon-24@2x.png" width="48" />
-        <icon height="55" src="resources/ios/icon/icon-27.5@2x.png" width="55" />
-        <icon height="88" src="resources/ios/icon/icon-44@2x.png" width="88" />
-        <icon height="172" src="resources/ios/icon/icon-86@2x.png" width="172" />
-        <icon height="196" src="resources/ios/icon/icon-98@2x.png" width="196" />
-        <icon height="216" src="resources/ios/icon/icon-108@2x.png" width="216" />
-        <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
-        <icon height="80" src="resources/ios/icon/icon-40@2x.png" width="80" />
-        <icon height="120" src="resources/ios/icon/icon-40@3x.png" width="120" />
-        <icon height="50" src="resources/ios/icon/icon-50.png" width="50" />
-        <icon height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
-        <icon height="60" src="resources/ios/icon/icon-60.png" width="60" />
-        <icon height="120" src="resources/ios/icon/icon-60@2x.png" width="120" />
-        <icon height="180" src="resources/ios/icon/icon-60@3x.png" width="180" />
-        <icon height="72" src="resources/ios/icon/icon-72.png" width="72" />
-        <icon height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
-        <icon height="76" src="resources/ios/icon/icon-76.png" width="76" />
-        <icon height="152" src="resources/ios/icon/icon-76@2x.png" width="152" />
-        <icon height="167" src="resources/ios/icon/icon-83.5@2x.png" width="167" />
-        <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" />
-        <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
-        <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
-        <splash height="2688" src="resources/ios/splash/Default-2688h~iphone.png" width="1242" />
-        <splash height="1242" src="resources/ios/splash/Default-Landscape-2688h~iphone.png" width="2688" />
-        <splash height="1792" src="resources/ios/splash/Default-1792h~iphone.png" width="828" />
-        <splash height="828" src="resources/ios/splash/Default-Landscape-1792h~iphone.png" width="1792" />
-        <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
-        <splash height="1125" src="resources/ios/splash/Default-Landscape-2436h.png" width="2436" />
-        <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
-        <splash height="1242" src="resources/ios/splash/Default-Landscape-736h.png" width="2208" />
-        <splash height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
-        <splash height="2048" src="resources/ios/splash/Default-Landscape@~ipadpro.png" width="2732" />
-        <splash height="768" src="resources/ios/splash/Default-Landscape~ipad.png" width="1024" />
-        <splash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
-        <splash height="2732" src="resources/ios/splash/Default-Portrait@~ipadpro.png" width="2048" />
-        <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
-        <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
-        <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
-        <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
+         These apply to BOTH iOS and Android unless overridden
+
+         in the platform-specific section below
+
+         ═══════════════════════════════════════════════════════════ -->
+ 
+    <!-- Disable back/forward swipe navigation (handled by React Router) -->
+<preference name="AllowBackForwardNavigationGestures" value="false" />
+ 
+    <!-- Disable pinch-to-zoom — app is not a website -->
+<preference name="EnableViewportScale" value="false" />
+ 
+    <!-- Disable overscroll bounce effect globally -->
+<preference name="DisallowOverscroll" value="true" />
+ 
+    <!-- Splash screen settings -->
+<preference name="AutoHideSplashScreen" value="false" />
+<preference name="SplashScreenDelay" value="0" />
+<preference name="ShowSplashScreenSpinner" value="false" />
+<preference name="FadeSplashScreen" value="true" />
+ 
+    <!--
+
+      VIEWPORT — viewport-fit=cover is REQUIRED for iOS safe area (notch/home bar)
+
+      user-scalable=no prevents zoom on input focus
+
+    -->
+<preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+ 
+    <!-- Keyboard settings — adjustPan prevents layout resize on keyboard open -->
+<preference name="HideKeyboardFormAccessoryBar" value="false" />
+<preference name="KeyboardResize" value="false" />
+<preference name="KeyboardResizeMode" value="none" />
+ 
+    <!--
+
+      CRITICAL FIX — Status bar must NOT overlay webview globally
+
+      This prevents bottom nav from jumping on iOS
+
+      iOS platform section below also sets this to false (redundant but safe)
+
+    -->
+<preference name="StatusBarOverlaysWebView" value="false" />
+ 
+    <!-- App should not run in fullscreen — status bar must be visible -->
+<preference name="Fullscreen" value="false" />
+ 
+ 
+    <!-- ═══════════════════════════════════════════════════════════
+
+         iOS PLATFORM CONFIGURATION
+
+         Overrides global preferences for iPhone/iPad only
+
+         ═══════════════════════════════════════════════════════════ -->
+<platform name="ios">
+ 
+        <!-- Lock to portrait mode -->
+<preference name="orientation" value="portrait" />
+ 
+        <!-- Disable swipe back — React Router handles navigation -->
+<preference name="AllowBackForwardNavigationGestures" value="false" />
+ 
+        <!-- Disable pinch zoom -->
+<preference name="EnableViewportScale" value="false" />
+ 
+        <!-- Disable bounce scroll on iOS -->
+<preference name="DisallowOverscroll" value="true" />
+<preference name="UIWebViewBounce" value="false" />
+ 
+        <!-- Splash screen — 3 second delay with fade on iOS -->
+<preference name="AutoHideSplashScreen" value="false" />
+<preference name="SplashScreenDelay" value="3000" />
+<preference name="FadeSplashScreen" value="true" />
+<preference name="FadeSplashScreenDuration" value="1000" />
+<preference name="ShowSplashScreenSpinner" value="false" />
+ 
+        <!-- Use WKWebView only — UIWebView is deprecated by Apple -->
+<preference name="WKWebViewOnly" value="true" />
+<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+ 
+        <!--
+
+          CRITICAL FIX — Must be false on iOS
+
+          When true: status bar overlaps app content → layout height miscalculates
+
+          When false: status bar sits above app → correct safe area calculation
+
+          This fixes the bottom nav jumping to top issue
+
+        -->
+<preference name="StatusBarOverlaysWebView" value="false" />
+ 
+        <!-- App not fullscreen — status bar visible -->
+<preference name="Fullscreen" value="false" />
+ 
+        <!--
+
+          Status bar appearance
+
+          lightcontent = white text on status bar (good for dark/colored headers)
+
+          BackgroundColor white matches app header
+
+        -->
+<preference name="StatusBarStyle" value="lightcontent" />
+<preference name="StatusBarBackgroundColor" value="#ffffff" />
+ 
+        <!-- Keyboard settings for iOS -->
+<preference name="HideKeyboardFormAccessoryBar" value="false" />
+<preference name="KeyboardResize" value="false" />
+<preference name="KeyboardResizeMode" value="none" />
+ 
+        <!--
+
+          Viewport with safe area support
+
+          viewport-fit=cover enables env(safe-area-inset-*) CSS variables
+
+          Required for notch and home indicator spacing
+
+        -->
+<preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<preference name="DisallowOverscroll" value="true" />
+ 
+        <!--
+
+          PRIVACY PERMISSIONS
+
+          Required strings shown to user when app requests device access
+
+          Apple rejects apps without these descriptions
+
+        -->
+ 
+        <!-- Camera: used for profile photo capture -->
+<edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+<string>Camera access for profile photo</string>
+</edit-config>
+ 
+        <!-- Photo Library Read: used to pick profile photo from gallery -->
+<edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+<string>Photo library access for profile photo</string>
+</edit-config>
+ 
+        <!-- Photo Library Write: used to save photos to device -->
+<edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
+<string>Photo library access for saving photos</string>
+</edit-config>
+ 
+        <!--
+
+          UIViewControllerBasedStatusBarAppearance = false
+
+          Allows Cordova StatusBar plugin to control status bar appearance
+
+          Without this, status bar color/style changes may not work on iOS
+
+        -->
+<edit-config file="*-Info.plist" mode="merge" target="UIViewControllerBasedStatusBarAppearance">
+<false/>
+</edit-config>
+ 
+        <!-- ── iOS App Icons ───────────────────────────────────── -->
+<icon height="57"   src="resources/ios/icon/icon.png"          width="57"  />
+<icon height="114"  src="resources/ios/icon/icon@2x.png"       width="114" />
+<icon height="20"   src="resources/ios/icon/icon-20.png"       width="20"  />
+<icon height="40"   src="resources/ios/icon/icon-20@2x.png"    width="40"  />
+<icon height="60"   src="resources/ios/icon/icon-20@3x.png"    width="60"  />
+<icon height="29"   src="resources/ios/icon/icon-29.png"       width="29"  />
+<icon height="58"   src="resources/ios/icon/icon-29@2x.png"    width="58"  />
+<icon height="87"   src="resources/ios/icon/icon-29@3x.png"    width="87"  />
+<icon height="48"   src="resources/ios/icon/icon-24@2x.png"    width="48"  />
+<icon height="55"   src="resources/ios/icon/icon-27.5@2x.png"  width="55"  />
+<icon height="88"   src="resources/ios/icon/icon-44@2x.png"    width="88"  />
+<icon height="172"  src="resources/ios/icon/icon-86@2x.png"    width="172" />
+<icon height="196"  src="resources/ios/icon/icon-98@2x.png"    width="196" />
+<icon height="216"  src="resources/ios/icon/icon-108@2x.png"   width="216" />
+<icon height="40"   src="resources/ios/icon/icon-40.png"       width="40"  />
+<icon height="80"   src="resources/ios/icon/icon-40@2x.png"    width="80"  />
+<icon height="120"  src="resources/ios/icon/icon-40@3x.png"    width="120" />
+<icon height="50"   src="resources/ios/icon/icon-50.png"       width="50"  />
+<icon height="100"  src="resources/ios/icon/icon-50@2x.png"    width="100" />
+<icon height="60"   src="resources/ios/icon/icon-60.png"       width="60"  />
+<icon height="120"  src="resources/ios/icon/icon-60@2x.png"    width="120" />
+<icon height="180"  src="resources/ios/icon/icon-60@3x.png"    width="180" />
+<icon height="72"   src="resources/ios/icon/icon-72.png"       width="72"  />
+<icon height="144"  src="resources/ios/icon/icon-72@2x.png"    width="144" />
+<icon height="76"   src="resources/ios/icon/icon-76.png"       width="76"  />
+<icon height="152"  src="resources/ios/icon/icon-76@2x.png"    width="152" />
+<icon height="167"  src="resources/ios/icon/icon-83.5@2x.png"  width="167" />
+<icon height="1024" src="resources/ios/icon/icon-1024.png"     width="1024"/>
+ 
+        <!-- ── iOS Splash Screens ─────────────────────────────── -->
+<splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png"           width="640"  />
+<splash height="1334" src="resources/ios/splash/Default-667h.png"                     width="750"  />
+<splash height="2688" src="resources/ios/splash/Default-2688h~iphone.png"             width="1242" />
+<splash height="1242" src="resources/ios/splash/Default-Landscape-2688h~iphone.png"   width="2688" />
+<splash height="1792" src="resources/ios/splash/Default-1792h~iphone.png"             width="828"  />
+<splash height="828"  src="resources/ios/splash/Default-Landscape-1792h~iphone.png"   width="1792" />
+<splash height="2436" src="resources/ios/splash/Default-2436h.png"                    width="1125" />
+<splash height="1125" src="resources/ios/splash/Default-Landscape-2436h.png"          width="2436" />
+<splash height="2208" src="resources/ios/splash/Default-736h.png"                     width="1242" />
+<splash height="1242" src="resources/ios/splash/Default-Landscape-736h.png"           width="2208" />
+<splash height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png"        width="2048" />
+<splash height="2048" src="resources/ios/splash/Default-Landscape@~ipadpro.png"       width="2732" />
+<splash height="768"  src="resources/ios/splash/Default-Landscape~ipad.png"           width="1024" />
+<splash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png"         width="1536" />
+<splash height="2732" src="resources/ios/splash/Default-Portrait@~ipadpro.png"        width="2048" />
+<splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png"            width="768"  />
+<splash height="960"  src="resources/ios/splash/Default@2x~iphone.png"                width="640"  />
+<splash height="480"  src="resources/ios/splash/Default~iphone.png"                   width="320"  />
+<splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png"      width="2732" />
+ 
     </platform>
+ 
+ 
+    <!-- ═══════════════════════════════════════════════════════════
 
-    <!-- Android Specific Configurations -->
-    <platform name="android">
-        <preference name="orientation" value="portrait" />
-        <preference name="KeyboardResize" value="false" />
-        <preference name="KeyboardResizeMode" value="none" />
-        <preference name="android-windowSoftInputMode" value="adjustPan" />
-        <preference name="AndroidWindowSplashScreenBackground" value="#F5E9D3" />
-        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="resources/icon.png" />
-        <preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#F5E9D3" />
-        
-        <!-- Android Icons -->
-        <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
-        <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
-        <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
-        <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png" />
-        <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
-        <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
+         ANDROID PLATFORM CONFIGURATION
 
-        <!-- Line 121-129: Network and SDK Settings -->
-        <preference name="android-minSdkVersion" value="22" /> <!-- Minimum Android API Level supported (Android 5.1) -->
-        <preference name="AndroidInsecureFileModeEnabled" value="true" /> <!-- Allows accessing local storage files via file:// -->
-        <preference name="android-cleartext" value="true" /> <!-- Enables unencrypted (HTTP) network requests -->
-        <edit-config
-         file="app/src/main/AndroidManifest.xml"
-         mode="merge"
-          target="/manifest/application">
-            <!-- Injecting cleartext permission directly into AndroidManifest.xml -->
-            <application android:usesCleartextTraffic="true" />
-        </edit-config>
+         Overrides global preferences for Android only
+
+         ═══════════════════════════════════════════════════════════ -->
+<platform name="android">
+
+        <!-- Eliminates the 300ms tap delay on Android entirely -->
+<preference name="FastClick" value="true" />
+ 
+        <!-- Lock to portrait mode -->
+<preference name="orientation" value="portrait" />
+
+<preference name="DisallowOverscroll" value="true" />
+ 
+        <!-- Keyboard settings — adjustPan moves content up without resizing layout -->
+<preference name="KeyboardResize" value="false" />
+<preference name="KeyboardResizeMode" value="none" />
+<preference name="android-windowSoftInputMode" value="adjustPan" />
+ 
+        <!-- Splash screen colors for Android 12+ splash screen API -->
+<preference name="AndroidWindowSplashScreenBackground" value="#F5E9D3" />
+<preference name="AndroidWindowSplashScreenAnimatedIcon" value="resources/icon.png" />
+<preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#F5E9D3" />
+ 
+        <!-- Minimum Android API 22 = Android 5.1 (covers 99%+ devices) -->
+<preference name="android-minSdkVersion" value="22" />
+ 
+        <!-- Allow file:// URI access for local storage -->
+<preference name="AndroidInsecureFileModeEnabled" value="true" />
+ 
+        <!-- ── Android App Icons ───────────────────────────────── -->
+<icon density="ldpi"    src="resources/android/icon/drawable-ldpi-icon.png"    />
+<icon density="mdpi"    src="resources/android/icon/drawable-mdpi-icon.png"    />
+<icon density="hdpi"    src="resources/android/icon/drawable-hdpi-icon.png"    />
+<icon density="xhdpi"   src="resources/android/icon/drawable-xhdpi-icon.png"   />
+<icon density="xxhdpi"  src="resources/android/icon/drawable-xxhdpi-icon.png"  />
+<icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
+ 
+        <!--
+
+          CRITICAL — Allow HTTP (non-HTTPS) network requests on Android 9+
+
+          Android blocks cleartext (http://) traffic by default since API 28
+
+          Required for API calls to http:// backend server
+
+          NOTE: For production / Play Store, migrate to HTTPS and remove this
+
+        -->
+<edit-config
+
+            file="app/src/main/AndroidManifest.xml"
+
+            mode="merge"
+
+            target="/manifest/application">
+<application android:usesCleartextTraffic="true" />
+</edit-config>
+ 
     </platform>
+ 
 </widget>
+ 
