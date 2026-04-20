@@ -82,10 +82,10 @@
     -->
 <preference name="Viewport" value="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
  
-    <!-- Keyboard settings — adjustPan prevents layout resize on keyboard open -->
+    <!-- Keyboard settings - optimized for cross-platform behavior -->
 <preference name="HideKeyboardFormAccessoryBar" value="false" />
-<preference name="KeyboardResize" value="false" />
-<preference name="KeyboardResizeMode" value="none" />
+<preference name="KeyboardResize" value="true" />
+<preference name="KeyboardResizeMode" value="body" />
  
     <!--
 
@@ -163,10 +163,10 @@
 <preference name="StatusBarStyle" value="lightcontent" />
 <preference name="StatusBarBackgroundColor" value="#ffffff" />
  
-        <!-- Keyboard settings for iOS -->
+        <!-- Keyboard settings for iOS - optimized for smooth behavior -->
 <preference name="HideKeyboardFormAccessoryBar" value="false" />
-<preference name="KeyboardResize" value="false" />
-<preference name="KeyboardResizeMode" value="none" />
+<preference name="KeyboardResize" value="true" />
+<preference name="KeyboardResizeMode" value="body" />
  
         <!--
 
@@ -290,10 +290,10 @@
 
 <preference name="DisallowOverscroll" value="true" />
  
-        <!-- Keyboard settings — adjustPan moves content up without resizing layout -->
-<preference name="KeyboardResize" value="false" />
-<preference name="KeyboardResizeMode" value="none" />
-<preference name="android-windowSoftInputMode" value="adjustPan" />
+        <!-- Keyboard settings - optimized for smooth behavior on Android -->
+<preference name="KeyboardResize" value="true" />
+<preference name="KeyboardResizeMode" value="body" />
+<preference name="android-windowSoftInputMode" value="adjustResize" />
  
         <!-- Splash screen colors for Android 12+ splash screen API -->
 <preference name="AndroidWindowSplashScreenBackground" value="#F5E9D3" />
