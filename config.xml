@@ -19,7 +19,7 @@
 
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
 
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"> 
 
 <name>Smart Pujari</name>
 <description>Smart Pujari by Peaklyft</description>
@@ -68,8 +68,9 @@
 <preference name="DisallowOverscroll" value="true" />
  
     <!-- Splash screen settings -->
-<preference name="AutoHideSplashScreen" value="false" />
-<preference name="SplashScreenDelay" value="0" />
+
+<preference name="AutoHideSplashScreen" value="true" />
+<preference name="SplashScreenDelay" value="3000" />
 <preference name="ShowSplashScreenSpinner" value="false" />
 <preference name="FadeSplashScreen" value="true" />
  
@@ -110,6 +111,8 @@
 
          ═══════════════════════════════════════════════════════════ -->
 <platform name="ios">
+
+<preference name="deployment-target" value="13.0" />
  
         <!-- Lock to portrait mode -->
 <preference name="orientation" value="portrait" />
@@ -125,9 +128,9 @@
 <preference name="UIWebViewBounce" value="false" />
  
         <!-- Splash screen — 3 second delay with fade on iOS -->
-<preference name="AutoHideSplashScreen" value="false" />
+<preference name="AutoHideSplashScreen" value="true" />
 <preference name="SplashScreenDelay" value="3000" />
-<preference name="FadeSplashScreen" value="true" />
+<preference name="FadeSplashScreen" value="false" />
 <preference name="FadeSplashScreenDuration" value="1000" />
 <preference name="ShowSplashScreenSpinner" value="false" />
  
